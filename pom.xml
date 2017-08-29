@@ -27,54 +27,83 @@
   <name>Spring Boot - HTTP</name>
   <description>Spring Boot - HTTP</description>
 
-  <properties>
-    <spring-boot.bom.version>2</spring-boot.bom.version>
-    <tomcat.version>8.0.36</tomcat.version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <maven.spring-boot.plugin.version>1.4.1.RELEASE</maven.spring-boot.plugin.version>
-  </properties>
+        <!-- configure the versions you want to use here -->
+        <fabric8.version>2.2.170.redhat-000013</fabric8.version>
+        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
+        <maven.spring-boot.plugin.version>1.4.1.RELEASE</maven.spring-boot.plugin.version>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- Spring Boot BOM File -->
-      <dependency>
-        <groupId>org.jboss.snowdrop</groupId>
-        <artifactId>spring-boot-1.4-bom</artifactId>
-        <version>${spring-boot.bom.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <!-- maven plugin versions -->
+        <fabric8.maven.plugin.version>3.1.80.redhat-000013</fabric8.maven.plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
+                <version>${fabric8.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
   <dependencies>
 
-    <!-- Apache Tomcat Dependency required -->
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-juli</artifactId>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring-boot</artifactId>
+        <version>2.19.2</version>
     </dependency>
 
     <!-- Spring Boot Starters -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
-    <!-- Testing -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring-boot-starter</artifactId>
+      <version>2.19.2</version>
+    </dependency>
+
+    <!-- testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>fabric8-arquillian</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
