@@ -24,8 +24,8 @@
   <artifactId>adesso</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>Spring Boot - HTTP</name>
-  <description>Spring Boot - HTTP</description>
+  <name>Spring Boot Fuse Demo</name>
+  <description>Implements a simple route based on JBoss Fuse, compatible with openshift.io</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
