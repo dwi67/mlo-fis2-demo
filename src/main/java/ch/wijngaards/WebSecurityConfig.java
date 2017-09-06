@@ -1,5 +1,7 @@
 package ch.wijngaards;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // expose Spring Actuator security role for re-use with Jolokia
+
+    private static final Logger LOG = LoggerFactory.getLogger(WebSecurityConfig.class);
 
     @Value("${management.security.role}")
     private String managementSecurityRole;
@@ -43,6 +47,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(
                 User.withUsername("admin").password("admin").roles("admin").build());
+
+        LOG.info(manager.toString());
+
         return manager;
     }
 
