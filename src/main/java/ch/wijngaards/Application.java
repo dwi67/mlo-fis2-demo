@@ -34,7 +34,7 @@ public class Application extends RouteBuilder {
 
     public static void main(String[] args) throws Exception {
 
-        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
+        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "true");
 
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 
