@@ -13,7 +13,7 @@
  *  implied.  See the License for the specific language governing
  *  permissions and limitations under the License.
  */
-package java.ch.wijngaards;
+package ch.wijngaards;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.boot.SpringApplication;

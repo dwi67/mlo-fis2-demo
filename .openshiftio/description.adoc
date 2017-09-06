@@ -1,1 +1,1 @@
-Quickstart to expose a HTTP Greeting endpoint using Spring Boot and Apache Tomcat in embedded mode
+Camel FIS2 compatible spring boot application to show the features of camel in openshift.io and Fabric8 v4
