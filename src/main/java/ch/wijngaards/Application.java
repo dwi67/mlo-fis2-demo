@@ -24,6 +24,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -32,6 +33,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
+@EnableGlobalMethodSecurity
 @ImportResource({"classpath:spring/camel-context.xml"})
 public class Application extends RouteBuilder {
 
@@ -61,14 +63,5 @@ public class Application extends RouteBuilder {
                 User.withUsername("admin").password("admin").roles("ADMIN").build());
         return manager;
     }
-
-    /**
-     * Set things up to be in offline mode.
-     */
-    @Bean
-    public ConfigFacade configFacade() {
-        System.setProperty("hawtio.offline", "true");
-        return ConfigFacade.getSingleton();
-    }
-}
+ }
 
