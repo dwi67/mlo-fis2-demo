@@ -21,7 +21,7 @@
   </parent>
 
   <groupId>ch.wijngaards</groupId>
-  <artifactId>adesso</artifactId>
+  <artifactId>mlo-fis2-demo</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <name>FIS2 Demo - Microsoft loves OpenShift</name>
