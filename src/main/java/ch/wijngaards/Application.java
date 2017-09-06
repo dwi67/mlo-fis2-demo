@@ -15,12 +15,14 @@
  */
 package ch.wijngaards;
 
+import io.hawt.config.ConfigFacade;
 import io.hawt.web.AuthenticationFilter;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.spring.boot.CamelSpringBootApplicationController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -48,4 +50,14 @@ public class Application extends RouteBuilder {
             .setBody().constant("Hello World")
             .log(">>> ${body}");
     }
+
+    /**
+     * Set things up to be in offline mode.
+     */
+    @Bean
+    public ConfigFacade configFacade() {
+        System.setProperty("hawtio.offline", "true");
+        return ConfigFacade.getSingleton();
+    }
 }
+
