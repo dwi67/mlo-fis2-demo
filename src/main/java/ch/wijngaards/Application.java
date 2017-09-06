@@ -16,8 +16,10 @@
 package ch.wijngaards;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.spring.boot.CamelSpringBootApplicationController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -27,9 +29,14 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource({"classpath:spring/camel-context.xml"})
 public class Application extends RouteBuilder {
 
-    // must have a main method spring-boot can run
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+    public static void main(String[] args) throws Exception {
+
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+
+        CamelSpringBootApplicationController applicationController =
+                   applicationContext.getBean(CamelSpringBootApplicationController.class);
+
+        applicationController.run();
     }
 
     @Override
