@@ -24,7 +24,7 @@
   <artifactId>adesso</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>Spring Boot Fuse Demo</name>
+  <name>FIS2 Demo - Microsoft loves OpenShift</name>
   <description>Implements a simple route based on JBoss Fuse, compatible with openshift.io</description>
 
     <properties>
