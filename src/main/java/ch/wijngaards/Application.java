@@ -24,6 +24,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
@@ -49,6 +52,14 @@ public class Application extends RouteBuilder {
         from("timer://foo?period=5000")
             .setBody().constant("Hello World")
             .log(">>> ${body}");
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() throws Exception {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(
+                User.withUsername("admin").password("admin").roles("ADMIN").build());
+        return manager;
     }
 
     /**
