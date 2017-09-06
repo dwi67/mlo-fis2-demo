@@ -33,7 +33,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
-@EnableGlobalMethodSecurity
 @ImportResource({"classpath:spring/camel-context.xml"})
 public class Application extends RouteBuilder {
 
@@ -54,14 +53,6 @@ public class Application extends RouteBuilder {
         from("timer://foo?period=5000")
             .setBody().constant("Hello World")
             .log(">>> ${body}");
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() throws Exception {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(
-                User.withUsername("admin").password("admin").roles("admin").build());
-        return manager;
     }
  }
 
