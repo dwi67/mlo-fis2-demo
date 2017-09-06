@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-registry
+spec:
+  selector:
+    app: mlo-fis2-demo
+    group: ch.wijngaards
+    provider: fabric8
+  type: ClusterIP
+  clusterIP: 172.30.184.87
+  ports:
+  - name: http
+    port: 8778
+    protocol: TCP
+    targetPort: 8778
+  sessionAffinity: None
+status:
+  loadBalancer: {}
