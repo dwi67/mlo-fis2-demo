@@ -148,14 +148,6 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
             <!-- to run with mvn hawtio:spring-boot -->
             <plugin>
                 <groupId>io.hawt</groupId>
@@ -177,7 +169,6 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>fabric8-maven-plugin</artifactId>
-                        <version>3.5.25</version>
                         <executions>
                             <execution>
                                 <id>fmp</id>
