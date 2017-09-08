@@ -54,5 +54,26 @@ public class Application extends RouteBuilder {
             .setBody().constant("Hello World")
             .log(">>> ${body}");
     }
+
+
+    /**
+     * Loading an example plugin.
+     */
+    @Bean
+    public HawtPlugin samplePlugin() {
+        return new HawtPlugin("sample-plugin",
+                "/hawtio/plugins",
+                "",
+                new String[] { "sample-plugin/js/sample-plugin.js" });
+    }
+
+    /**
+     * Set things up to be in offline mode.
+     */
+    @Bean
+    public ConfigFacade configFacade() {
+        System.setProperty("hawtio.offline", "true");
+        return ConfigFacade.getSingleton();
+    }
  }
 
