@@ -53,11 +53,11 @@ public class Application extends RouteBuilder {
 
     /**
      * Set things up to be in offline mode.
-     */
+
     @Bean
     public ConfigFacade configFacade() {
         System.setProperty("hawtio.offline", "true");
         return ConfigFacade.getSingleton();
-    }
+    }*/
  }
 
