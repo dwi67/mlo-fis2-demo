@@ -24,10 +24,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
@@ -53,18 +49,6 @@ public class Application extends RouteBuilder {
         from("timer://foo?period=5000")
             .setBody().constant("Hello World")
             .log(">>> ${body}");
-    }
-
-
-    /**
-     * Loading an example plugin.
-     */
-    @Bean
-    public HawtPlugin samplePlugin() {
-        return new HawtPlugin("sample-plugin",
-                "/hawtio/plugins",
-                "",
-                new String[] { "sample-plugin/js/sample-plugin.js" });
     }
 
     /**
