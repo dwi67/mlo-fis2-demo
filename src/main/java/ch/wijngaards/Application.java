@@ -33,7 +33,7 @@ import java.util.List;
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
-//@ImportResource({"classpath:spring/camel-context.xml"})
+@ImportResource({"classpath:spring/camel-context.xml"})
 public class Application {
 
     private final static Logger LOG = LoggerFactory.getLogger(Application.class);
@@ -66,10 +66,9 @@ public class Application {
      */
     @Bean
     public ConfigFacade configFacade() {
-//        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
         System.setProperty("hawtio.offline", "true");
         LOG.info("Configfacade set");
-        System.getenv().forEach((key, value) -> LOG.info(key + "=" + value));
+        System.getProperties().forEach((key, value) -> LOG.info(key + "=" + value));
         return ConfigFacade.getSingleton();
     }
  }
