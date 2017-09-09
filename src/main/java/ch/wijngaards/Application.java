@@ -33,8 +33,8 @@ import java.util.List;
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
-@ImportResource({"classpath:spring/camel-context.xml"})
-public class Application extends RouteBuilder {
+//@ImportResource({"classpath:spring/camel-context.xml"})
+public class Application {
 
     private final static Logger LOG = LoggerFactory.getLogger(Application.class);
 
@@ -54,19 +54,19 @@ public class Application extends RouteBuilder {
         //applicationController.run();
     }
 
-    @Override
-    public void configure() throws Exception {
-        from("timer://foo?period=5000")
-            .setBody().constant("Hello World")
-            .log(">>> ${body}");
-    }
+//    @Override
+//    public void configure() throws Exception {
+//        from("timer://foo?period=5000")
+//            .setBody().constant("Hello World")
+//            .log(">>> ${body}");
+//    }
 
     /**
      * Set things up to be in offline mode.
      */
     @Bean
     public ConfigFacade configFacade() {
-        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
+//        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
         System.setProperty("hawtio.offline", "true");
         LOG.info("Configfacade set");
         System.getenv().forEach((key, value) -> LOG.info(key + "=" + value));
