@@ -79,12 +79,12 @@ public class Application {
                 new String[] { "sample-plugin/js/sample-plugin.js" });
     }
 
-    @PostConstruct
-    public void init() {
-        final ConfigManager configManager = new ConfigManager();
-        configManager.init();
-        servletContext.setAttribute("ConfigManager", configManager);
-    }
+//    @PostConstruct
+//    public void init() {
+//        final ConfigManager configManager = new ConfigManager();
+//        configManager.init();
+//        servletContext.setAttribute("ConfigManager", configManager);
+//    }
 
     /**
      * Set things up to be in offline mode
