@@ -96,7 +96,7 @@ public class Application {
         System.getProperties().forEach((key, value) -> LOG.info(key + "=" + value));
         ConfigFacade config = new ConfigFacade() {
             public boolean isOffline() {
-                return true;
+                return false;
             }
         };
         config.init();
