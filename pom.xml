@@ -60,8 +60,19 @@
             <groupId>io.hawt</groupId>
             <artifactId>hawtio-springboot</artifactId>
             <version>${hawtio.version}</version>
-        </dependency>  
-        
+        </dependency>
+
+        <dependency>
+            <groupId>io.hawt</groupId>
+            <artifactId>hawtio-core</artifactId>
+            <version>${hawtio.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jolokia</groupId>
+            <artifactId>jolokia-core</artifactId>
+        </dependency>
+
         <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

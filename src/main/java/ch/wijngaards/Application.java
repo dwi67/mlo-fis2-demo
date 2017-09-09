@@ -16,15 +16,20 @@
 package ch.wijngaards;
 
 import io.hawt.config.ConfigFacade;
+import io.hawt.springboot.EnableHawtio;
 import io.hawt.springboot.HawtPlugin;
+import io.hawt.system.ConfigManager;
 import io.hawt.web.AuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
+import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
 import java.util.List;
 
 /**
@@ -32,9 +37,13 @@ import java.util.List;
  */
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
+@EnableHawtio
 public class Application {
 
     private final static Logger LOG = LoggerFactory.getLogger(Application.class);
+
+    @Autowired
+    private ServletContext servletContext;
 
     public static void main(String[] args) throws Exception {
 
@@ -70,15 +79,29 @@ public class Application {
                 new String[] { "sample-plugin/js/sample-plugin.js" });
     }
 
+    @PostConstruct
+    public void init() {
+        final ConfigManager configManager = new ConfigManager();
+        configManager.init();
+        servletContext.setAttribute("ConfigManager", configManager);
+    }
+
     /**
-     * Set things up to be in offline mode.
+     * Set things up to be in offline mode
+     * @return
+     * @throws Exception
      */
     @Bean
-    public ConfigFacade configFacade() {
-        System.setProperty("hawtio.offline", "true");
-        LOG.info("Configfacade set");
+    public ConfigFacade configFacade() throws Exception {
         System.getProperties().forEach((key, value) -> LOG.info(key + "=" + value));
-        return ConfigFacade.getSingleton();
+        ConfigFacade config = new ConfigFacade() {
+            public boolean isOffline() {
+                return true;
+            }
+        };
+        config.init();
+        return config;
     }
+
  }
 
