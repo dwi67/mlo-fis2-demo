@@ -16,14 +16,12 @@
 package ch.wijngaards;
 
 import io.hawt.config.ConfigFacade;
+import io.hawt.springboot.HawtPlugin;
 import io.hawt.web.AuthenticationFilter;
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.spring.boot.CamelSpringBootApplicationController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
@@ -60,6 +58,17 @@ public class Application {
 //            .setBody().constant("Hello World")
 //            .log(">>> ${body}");
 //    }
+
+    /**
+     * Loading an example plugin.
+     */
+    @Bean
+    public HawtPlugin samplePlugin() {
+        return new HawtPlugin("sample-plugin",
+                "/hawtio/plugins",
+                "",
+                new String[] { "sample-plugin/js/sample-plugin.js" });
+    }
 
     /**
      * Set things up to be in offline mode.

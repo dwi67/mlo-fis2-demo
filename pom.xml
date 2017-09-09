@@ -34,7 +34,7 @@
         <fabric8.version>2.3.5</fabric8.version>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
         <maven.spring-boot.plugin.version>1.5.4.RELEASE</maven.spring-boot.plugin.version>
-        <hawtio.version>2.0-M3</hawtio.version>
+        <hawtio.version>1.5.3</hawtio.version>
 
         <!-- maven plugin versions -->
         <fabric8.maven.plugin.version>3.5.25</fabric8.maven.plugin.version>
@@ -60,8 +60,8 @@
             <groupId>io.hawt</groupId>
             <artifactId>hawtio-springboot</artifactId>
             <version>${hawtio.version}</version>
-        </dependency>
-
+        </dependency>  
+        
         <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
