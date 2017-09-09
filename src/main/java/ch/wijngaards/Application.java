@@ -37,7 +37,7 @@ import java.util.List;
  */
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
-@EnableHawtio
+//@EnableHawtio
 public class Application {
 
     private final static Logger LOG = LoggerFactory.getLogger(Application.class);
