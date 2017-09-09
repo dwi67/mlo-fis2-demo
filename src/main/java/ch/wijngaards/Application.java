@@ -27,6 +27,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
+import java.util.List;
+
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
@@ -61,11 +63,14 @@ public class Application extends RouteBuilder {
 
     /**
      * Set things up to be in offline mode.
-
+     */
     @Bean
     public ConfigFacade configFacade() {
+        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
         System.setProperty("hawtio.offline", "true");
+        LOG.info("Configfacade set");
+        System.getenv().forEach((key, value) -> LOG.info(key + "=" + value));
         return ConfigFacade.getSingleton();
-    }*/
+    }
  }
 
