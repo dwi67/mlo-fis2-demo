@@ -76,7 +76,7 @@ public class Application {
         return new HawtPlugin("sample-plugin",
                 "/hawtio/plugins",
                 "",
-                new String[] { "sample-plugin/js/sample-plugin.js" });
+                new String[] {"static/sample-plugin/js/sample-plugin.js"});
     }
 
     @PostConstruct
