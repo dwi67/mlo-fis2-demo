@@ -48,6 +48,7 @@ public class Application {
     public static void main(String[] args) throws Exception {
 
         System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
+        System.setProperty("hawtio.forceProperties", "true");
 
         LOG.info("Properties set");
 
@@ -82,9 +83,9 @@ public class Application {
     @PostConstruct
     public void init() {
         final ConfigManager configManager = new ConfigManager();
-        System.setProperty("hawtio.forceProperties", "true");
         configManager.init();
         servletContext.setAttribute("ConfigManager", configManager);
+        LOG.info("ConfigManager set");
     }
 
     /**
@@ -101,6 +102,7 @@ public class Application {
             }
         };
         config.init();
+        LOG.info("ConfigFacade set");
         return config;
     }
 
