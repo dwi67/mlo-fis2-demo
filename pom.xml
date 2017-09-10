@@ -34,7 +34,6 @@
         <fabric8.version>2.3.5</fabric8.version>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
         <maven.spring-boot.plugin.version>1.5.4.RELEASE</maven.spring-boot.plugin.version>
-        <hawtio.version>1.5.2</hawtio.version>
 
         <!-- maven plugin versions -->
         <fabric8.maven.plugin.version>3.5.25</fabric8.maven.plugin.version>
@@ -55,24 +54,6 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <dependency>
-            <groupId>io.hawt</groupId>
-            <artifactId>hawtio-springboot</artifactId>
-            <version>${hawtio.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.hawt</groupId>
-            <artifactId>hawtio-core</artifactId>
-            <version>${hawtio.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
-        </dependency>
-
         <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,11 +73,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-stream-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core</artifactId>
         </dependency>
 
         <!-- testing -->
@@ -153,23 +129,6 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>hawt-app-maven-plugin</artifactId>
-                <version>${fabric8.version}</version>
-                <executions>
-                    <execution>
-                        <id>hawt-app</id>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <configuration>
-                            <javaMainClass>ch.wijngaards.Application</javaMainClass>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

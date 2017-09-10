@@ -15,43 +15,23 @@
  */
 package ch.wijngaards;
 
-import io.hawt.config.ConfigFacade;
-import io.hawt.springboot.EnableHawtio;
-import io.hawt.springboot.HawtPlugin;
-import io.hawt.system.ConfigManager;
-import io.hawt.web.AuthenticationFilter;
+import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.ServletContext;
 
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
-@EnableHawtio
-public class Application {
+public class Application extends RouteBuilder {
 
     private final static Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    @Autowired
-    private ServletContext servletContext;
-
     public static void main(String[] args) throws Exception {
-
-        //String[] appArgs = {"--debug"};
-
-        System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
-        System.setProperty("hawtio.forceProperties", "true");
-
-        LOG.info("Properties set");
 
         SpringApplication.run(Application.class, args);
 
@@ -63,50 +43,13 @@ public class Application {
         //applicationController.run();
     }
 
-//    @Override
-//    public void configure() throws Exception {
-//        from("timer://foo?period=5000")
-//            .setBody().constant("Hello World")
-//            .log(">>> ${body}");
-//    }
-
-    /**
-     * Loading an example plugin.
-     */
-    @Bean
-    public HawtPlugin samplePlugin() {
-        LOG.info("Sample Plugin set");
-        return new HawtPlugin("sample-plugin",
-                "/hawtio/plugins",
-                "",
-                new String[] {"sample-plugin/js/sample-plugin.js"});
+    @Override
+    public void configure() throws Exception {
+        from("timer://foo?period=5000")
+            .setBody().constant("Hello World")
+            .log(">>> ${body}");
     }
 
-    @PostConstruct
-    public void init() {
-        final ConfigManager configManager = new ConfigManager();
-        configManager.init();
-        servletContext.setAttribute("ConfigManager", configManager);
-        LOG.info("ConfigManager set");
-    }
-
-    /**
-     * Set things up to be in offline mode
-     * @return
-     * @throws Exception
-     */
-    @Bean
-    public ConfigFacade configFacade() throws Exception {
-        System.getProperties().forEach((key, value) -> LOG.info(key + "=" + value));
-        ConfigFacade config = new ConfigFacade() {
-            public boolean isOffline() {
-                return true;
-            }
-        };
-        config.init();
-        LOG.info("ConfigFacade set");
-        return config;
-    }
 
  }
 
