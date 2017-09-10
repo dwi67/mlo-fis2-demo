@@ -73,10 +73,11 @@ public class Application {
      */
     @Bean
     public HawtPlugin samplePlugin() {
+        LOG.info("Sample Plugin set");
         return new HawtPlugin("sample-plugin",
                 "/hawtio/plugins",
                 "",
-                new String[] {"static/sample-plugin/js/sample-plugin.js"});
+                new String[] {"sample-plugin/js/sample-plugin.js"});
     }
 
     @PostConstruct
