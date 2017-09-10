@@ -30,7 +30,6 @@ import org.springframework.context.annotation.ImportResource;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
-import java.util.List;
 
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
