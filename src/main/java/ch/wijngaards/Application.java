@@ -34,13 +34,6 @@ public class Application extends RouteBuilder {
     public static void main(String[] args) throws Exception {
 
         SpringApplication.run(Application.class, args);
-
-        //ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-
-        //CamelSpringBootApplicationController applicationController =
-        //           applicationContext.getBean(CamelSpringBootApplicationController.class);
-
-        //applicationController.run();
     }
 
     @Override

@@ -6,7 +6,7 @@
        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <!-- You could also define a traditional camel context here -->
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <camelContext xmlns="http://camel.apache.org/schema/spring" id="FIS2DemoContext">
         <route>
             <from uri="timer://foo?period=1000"/>
             <setBody><simple>Hello World from camel-context.xml</simple></setBody>
