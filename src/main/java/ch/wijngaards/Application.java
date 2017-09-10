@@ -82,6 +82,7 @@ public class Application {
     @PostConstruct
     public void init() {
         final ConfigManager configManager = new ConfigManager();
+        System.setProperty("hawtio.forceProperties", "true");
         configManager.init();
         servletContext.setAttribute("ConfigManager", configManager);
     }
@@ -96,7 +97,7 @@ public class Application {
         System.getProperties().forEach((key, value) -> LOG.info(key + "=" + value));
         ConfigFacade config = new ConfigFacade() {
             public boolean isOffline() {
-                return false;
+                return true;
             }
         };
         config.init();
