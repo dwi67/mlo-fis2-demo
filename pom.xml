@@ -69,12 +69,6 @@
         </dependency>
 
         <dependency>
-            <groupId>io.hawt</groupId>
-            <artifactId>hawtio-fabric8-branding</artifactId>
-            <version>${hawtio.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-core</artifactId>
         </dependency>
