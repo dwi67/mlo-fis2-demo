@@ -46,14 +46,14 @@ public class Application {
 
     public static void main(String[] args) throws Exception {
 
-        String[] appArgs = {"--debug"};
+        //String[] appArgs = {"--debug"};
 
         System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
         System.setProperty("hawtio.forceProperties", "true");
 
         LOG.info("Properties set");
 
-        SpringApplication.run(Application.class, appArgs);
+        SpringApplication.run(Application.class, args);
 
         //ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 

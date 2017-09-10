@@ -160,6 +160,7 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>hawt-app-maven-plugin</artifactId>
+                <version>${fabric8.version}</version>
                 <executions>
                     <execution>
                         <id>hawt-app</id>
