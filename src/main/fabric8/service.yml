@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${project.artifactId}-jolokia
+spec:
+  selector:
+    app: ${project.artifactId}-jolokia
+  ports:
+  - nodePort: 0
+    port: 8778
+    protocol: TCP
+    targetPort: 8778
+status:
+  loadBalancer: {}
