@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: ${project.artifactId}-jolokia
 spec:
-  selector:
-    app: ${project.artifactId}-jolokia
+  selector: {}
   ports:
-  - nodePort: 0
+  -
+    name: "ml2-jolokia"
     port: 8778
     protocol: TCP
     targetPort: 8778
-status:
-  loadBalancer: {}
+
