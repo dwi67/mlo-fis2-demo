@@ -5,12 +5,21 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <!-- You could also define a traditional camel context here -->
+    <!-- Main camel context, provides context name -->
     <camelContext xmlns="http://camel.apache.org/schema/spring" id="FIS2DemoContext">
+
         <route>
             <from uri="timer://foo?period=1000"/>
-            <setBody><simple>Hello World from camel-context.xml</simple></setBody>
+            <setBody><simple>Timer from Camel Context</simple></setBody>
+            <log message=">>> ${body}"/>
+            <to uri="seda:concurrentProcessingEndpoint"/>
+        </route>
+
+        <route>
+            <from id="sedaEndpoint" uri="seda:concurrentProcessingEndpoint"/>
+            <setBody><simple>Seda Endpoint</simple></setBody>
             <log message=">>> ${body}"/>
         </route>
+
     </camelContext>
 </beans>
